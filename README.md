@@ -1,0 +1,7 @@
+# Paraná - Deforestation Detection
+
+Suppose I work as a volunteer and I want to help to identify deforestation areas in Paraná state (Brazil). What/how should I develop?
+
+## TODO
+
+- [ ] May use MapBiomas to exclude agriculture areas from alerts;
