@@ -94,42 +94,6 @@ selectorPanel.add(selectLabel);
 selectorPanel.add(municipalitySelector);
 leftMap.add(selectorPanel);
 
-// --- WIDGET PANEL (will be added after analysis runs) ---
-var controlPanel = ui.Panel({
-  style: {
-    position: 'bottom-right',
-    padding: '8px 15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)'
-  }
-});
-
-var alertsLayer = null;
-
-var checkbox = ui.Checkbox({
-  label: 'Show 2026 Alerts',
-  value: true,
-  onChange: function(checked) {
-    if (alertsLayer) alertsLayer.setShown(checked);
-  }
-});
-
-var sliderLabel = ui.Label('Opacity:', {fontSize: '12px', color: 'gray'});
-var slider = ui.Slider({
-  min: 0,
-  max: 1,
-  step: 0.1,
-  value: 1,
-  style: {width: '150px'},
-  onChange: function(value) {
-    if (alertsLayer) alertsLayer.setOpacity(value);
-  }
-});
-
-controlPanel.add(checkbox);
-controlPanel.add(sliderLabel);
-controlPanel.add(slider);
-rightMap.add(controlPanel);
-
 // --- ANALYSIS FUNCTION ---
 function runAnalysis(municipalityName) {
   // Clear previous layers

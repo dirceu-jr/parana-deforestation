@@ -73,44 +73,10 @@ rightMap.addLayer(imgRecent, trueColorVis, 'Current (2025-26)');
 rightMap.addLayer(parkOutlines, {palette: ['00FF00']}, 'Protected Borders');
 
 // Detailed alerts layer (visible when zoomed in)
-var alertsLayer = rightMap.addLayer(alerts, alertVis, 'NEW ALERTS (2026)');
+var alertsLayer = rightMap.addLayer(alerts, alertVis, 'Alerts (detail)');
 rightMap.setControlVisibility({layerList: true});
 
-// --- 5. WIDGET PANEL ---
-var panel = ui.Panel({
-  style: {
-    position: 'bottom-right',
-    padding: '8px 15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)'
-  }
-});
-
-var checkbox = ui.Checkbox({
-  label: 'Show 2026 Alerts',
-  value: true,
-  onChange: function(checked) {
-    alertsLayer.setShown(checked);
-  }
-});
-
-var sliderLabel = ui.Label('Opacity:', {fontSize: '12px', color: 'gray'});
-var slider = ui.Slider({
-  min: 0,
-  max: 1,
-  step: 0.1,
-  value: 1,
-  style: {width: '150px'},
-  onChange: function(value) {
-    alertsLayer.setOpacity(value);
-  }
-});
-
-panel.add(checkbox);
-panel.add(sliderLabel);
-panel.add(slider);
-rightMap.add(panel);
-
-// --- 6. RENDER ---
+// --- 5. RENDER ---
 var splitPanel = ui.SplitPanel({
   firstPanel: leftMap,
   secondPanel: rightMap,
