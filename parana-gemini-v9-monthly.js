@@ -56,13 +56,13 @@ var parkOutlines = ee.Image().paint({featureCollection: protectedAreas, color: 1
 
 // LEFT MAP (Baseline Nov-Jan)
 var leftMap = ui.Map();
-leftMap.addLayer(imgBaseline, trueColorVis, 'Baseline (Nov 25 – Jan 26)');
+leftMap.addLayer(imgBaseline, trueColorVis, 'Baseline (Nov 25 - Jan 26)');
 leftMap.addLayer(parkOutlines, {palette: ['00FF00']}, 'Protected Borders');
 leftMap.setControlVisibility(false);
 
 // RIGHT MAP (Current Jan-Feb + Alerts)
 var rightMap = ui.Map();
-rightMap.addLayer(imgRecent, trueColorVis, 'Current (Jan – Feb 2026)');
+rightMap.addLayer(imgRecent, trueColorVis, 'Current (Jan - Feb 2026)');
 rightMap.addLayer(parkOutlines, {palette: ['00FF00']}, 'Protected Borders');
 
 var alertsLayer = rightMap.addLayer(alerts, alertVis, 'NEW ALERTS (last month)');
