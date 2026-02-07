@@ -49,12 +49,9 @@ var largeDrop = ndviDrop.gt(0.40);
 
 var potentialDeforestation = wasForest.and(isBare).and(largeDrop);
 
-// Morphological erosion: shrink patches by 1px to remove thin/noisy edges
-var eroded = potentialDeforestation.focal_min({radius: 1, kernelType: 'square'});
-
-// Only keep large contiguous clearings (~2.5 ha at 10 m resolution = 250 px)
-var patchSize = eroded.connectedPixelCount(500, true);
-var alerts = eroded.updateMask(patchSize.gte(250)).selfMask();
+// Only keep large contiguous clearings (~2.5 ha at 10 m = 250 px)
+var patchSize = potentialDeforestation.connectedPixelCount(256, true);
+var alerts = potentialDeforestation.updateMask(patchSize.gte(250)).selfMask();
 
 // --- 3. VISUALIZATION LAYERS ---
 // Slightly brighter visualization for Summer images
